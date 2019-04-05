@@ -25,7 +25,7 @@
     </script>
     <main role="main" class="flex-shrink-0">
     <div class="container" id='p1'>
-      <p class="lead mt-5">Authenticating the <a href="">Spotify&nbsp;Add‑on&nbsp;for&nbsp;Splunk</a> Modular Input with the <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow">Spotify API</a>. p.1/2</p>
+      <p class="lead mt-5">Authenticating the <a href="">Spotify&nbsp;Add‑on&nbsp;for&nbsp;Splunk</a> Modular Input with the <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow">Spotify API</a> <span class="badge badge-secondary">1/2</span></p>
       <p><strong>I. Create an app in the Spotify developer portal:</strong></p>
       <ol>
         <li>Go to your <a href="https://developer.spotify.com/dashboard/applications">Spotify Developer Dashboard</a>. Log in if necessary.</li>
@@ -33,7 +33,7 @@
         <li>Fill in the form as follows:
           <ul>
             <li><mark>App or Hardware Name:</mark> <code id="name">Splunk Modular Input</code><button type="button" class="btn btn-link" data-clipboard-target="#name" id="copy_name">Copy</button></li>
-            <li><mark>App or Hardware Description:</mark> <code  id="desc">This app manages access for Splunk to the Spotify API.</code><button type="button" class="btn btn-link" data-clipboard-target="#desc" id="copy_desc">Copy</button></li>
+            <li><mark>App or Hardware Description:</mark> <code id="desc">This app manages access for Splunk to the Spotify API.</code><button type="button" class="btn btn-link" data-clipboard-target="#desc" id="copy_desc">Copy</button></li>
             <li><mark>What are you building:</mark> Select <code>Website</code></li>
           </ul>
         </li>
@@ -67,7 +67,7 @@
     </div>
 
     <div class="container" id='p2'>
-      <p class="lead mt-5">Authenticating the <a href="">Spotify&nbsp;Add‑on&nbsp;for&nbsp;Splunk</a> Modular Input with the <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow">Spotify API</a>. p.2/2</p>
+      <p class="lead mt-5">Authenticating the <a href="">Spotify&nbsp;Add‑on&nbsp;for&nbsp;Splunk</a> Modular Input with the <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow">Spotify API</a> <span class="badge badge-secondary">2/2</span></p>
       <p><strong>V. Create a Modular Input stanza for the Spotify add-on for Splunk in your Splunk environment:</strong></p>
       <ol>
         <li>On your Splunk Web GUI, click on <mark>Settings</mark> -> <mark>Data Inputs</mark> and select <mark>Spotify</mark> from the list of Local Inputs.</li>
@@ -77,13 +77,9 @@
             <li><mark>Name</mark>: whatever you want to call this input stanza (e.g. your Spotify <code>username</code>)</li>
             <li><mark>Client ID</mark> &amp; <mark>Client Secret</mark>: Copy from your <a href="https://developer.spotify.com/dashboard/applications">Spotify Developer Dashboard</a>.</li>
             <li><mark>Redirect URI</mark>: 
-              <code id="uri">
-                <script type="text/javascript">document.write(window.location.href.split('?')[0]);</script>
-              </code><button type="button" class="btn btn-link" data-clipboard-target="#uri" id="copy_uri">Copy</button></li>
+              <code id="uri"><script type="text/javascript">document.write(window.location.href.split('?')[0]);</script></code><button type="button" class="btn btn-link" data-clipboard-target="#uri" id="copy_uri">Copy</button></li>
             <li><mark>Authorization Code</mark>: 
-              <code id="auth">
-                <script type="text/javascript">document.write(qs("code"));</script>
-              </code><button type="button" class="btn btn-link" data-clipboard-target="#auth" id="copy_auth">Copy</button></li>
+              <code id="auth"><script type="text/javascript">document.write(qs("code"));</script></code><button type="button" class="btn btn-link" data-clipboard-target="#auth" id="copy_auth">Copy</button></li>
             <li>Click the <mark>More Settings</mark> button if you wish to adjust the <mark>Interval</mark>, <mark>Index</mark>, etc.</li>
           </ul>
         </li>
