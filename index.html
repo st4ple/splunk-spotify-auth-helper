@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Oliver Stapleton">
+    <title>Splunk Spotify Auth Helper</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body class="d-flex flex-column h-100">
+    <script>
+      function qs(search_for) {
+        var query = window.location.search.substring(1);
+        var parms = query.split('&');
+        for (var i=0; i<parms.length; i++) {
+          var pos = parms[i].indexOf('=');
+          if (pos > 0  && search_for == parms[i].substring(0,pos)) {
+            return parms[i].substring(pos+1);
+          }
+        }
+        return "";
+      }
+    </script>
+    <main role="main" class="flex-shrink-0">
+    <div class="container" id='p1'>
+      <h1  class="mt-5">Setup Spotify Add-on for Splunk Modular Input 1/2</h1>
+      <p class="lead">Instruction to create a Spotify Developer App and authenticating a corresponding Modular Input stanza for the Spotify&nbsp;Add‑on&nbsp;for&nbsp;Splunk.</p>
+      <p><strong>I. Create an app in the Spotify developer portal:</strong></p>
+      <ol>
+        <li>Go to your <a href="https://developer.spotify.com/dashboard/applications">Spotify Developer Dashboard</a>. Log in if necessary.</li>
+        <li>Click <mark>Create Client ID</mark> in the top right-hand corner.</li>
+        <li>Fill in the form as follows:
+          <ul>
+            <li><mark>App or Hardware Name:</mark> <code id="name">Splunk Modular Input</code><button type="button" class="btn btn-link" data-clipboard-target="#name" id="copy_name">Copy</button></li>
+            <li><mark>App or Hardware Description:</mark> <code  id="desc">This app manages access for Splunk to the Spotify API.</code><button type="button" class="btn btn-link" data-clipboard-target="#desc" id="copy_desc">Copy</button></li>
+            <li><mark>What are you building:</mark> Select <code>Website</code></li>
+          </ul>
+        </li>
+        <li>State that you are not developing a commercial integration.</li>
+        <li>Accept to understand all disclaimers and click <mark>Submit</mark>.</li>
+      </ol>
+      <p><strong>II. Configure your Spotify app:</strong></p>
+      <ol>
+        <li>Click <mark>Edit Settings</mark> in the top right-hand corner.</li>
+        <li>In the section <mark>Redirect URI</mark>, fill in <code id="reduri"><script type="text/javascript">
+              document.write(window.location.href.split('?')[0]);
+            </script></code><button type="button" class="btn btn-link" data-clipboard-target="#reduri" id="copy_reduri">Copy</button></li>
+        <li>Scroll to the bottom of the modal and click <mark>Save</mark>.</li>
+      </ol>
+      <p><strong>III.Grant your app permission to access your data:</strong></p>
+      <ol>
+        <li>Copy the <mark>Client ID</mark> of your Spotify app from the <a href="https://developer.spotify.com/dashboard/applications">Spotify Developer Dashboard</a> to your clipboard.</li>
+        <li>Paste the <mark>Client ID</mark> in the form below.</li>
+        <li>Click the <mark>Authorize and Continue</mark> Button to get redirected to Spotify.</li>
+        <li>Grant your app the requested permissions and click <mark>Accept</mark>.</li>  
+      </ol>
+      <p><strong>IV. Generate Authorization Code:</strong></p>
+      <ul><li>
+      <form class="form-inline" action="https://accounts.spotify.com/en/authorize?">
+        <input type="text" class="form-control mb-2 mr-sm-2" name="client_id" placeholder="Client ID">
+        <input type="hidden" name="response_type" value="code">
+        <input type="hidden" name="redirect_uri" id="redirect_uri_input">
+        <input type="hidden" name="scope" value="user-top-read user-read-currently-playing user-read-recently-played playlist-read-private user-read-email user-library-read playlist-read-collaborative user-read-birthdate user-read-playback-state user-read-private user-follow-read user-top-read user-read-currently-playing">
+        <button type="submit" class="btn btn-primary mb-2">Authorize and Continue</button>
+      </form></li></ul>
+    </div>
+
+    <div class="container" id='p2'>
+      <h1  class="mt-5">Setup Spotify Add-on for Splunk Modular Input 2/2</h1>
+      <p class="lead">Instruction to creating a Spotify Developer App and authenticating a corresponding Modular Input stanza for the Spotify&nbsp;Add‑on&nbsp;for&nbsp;Splunk.</p>
+      <p><strong>V. Create a Modular Input stanza for the Spotify add-on for Splunk in your Splunk environment:</strong></p>
+      <ol>
+        <li>On your Splunk Web GUI, click on <mark>Settings</mark> -> <mark>Data Inputs</mark> and select <mark>Spotify</mark> from the list of Local Inputs.</li>
+        <li>Click <mark>New</mark> in the top righ-hand corner.</li>
+        <li>Fill in the form as follows:
+          <ul>
+            <li><mark>Name</mark>: whatever you want to call this input stanza (e.g. your Spotify <code>username</code>)</li>
+            <li><mark>Client ID</mark> &amp; <mark>Client Secret</mark>: Copy from your <a href="https://developer.spotify.com/dashboard/applications">Spotify Developer Dashboard</a>.</li>
+            <li><mark>Redirect URI</mark>: 
+              <code id="uri">
+                <script type="text/javascript">document.write(window.location.href.split('?')[0]);</script>
+              </code><button type="button" class="btn btn-link" data-clipboard-target="#uri" id="copy_uri">Copy</button></li>
+            <li><mark>Authorization Code</mark>: 
+              <code id="auth">
+                <script type="text/javascript">document.write(qs("code"));</script>
+              </code><button type="button" class="btn btn-link" data-clipboard-target="#auth" id="copy_auth">Copy</button></li>
+            <li>Click the <mark>More Settings</mark> button if you wish to adjust the <mark>Interval</mark>, <mark>Index</mark>, etc.</li>
+          </ul>
+        </li>
+      </ol>
+      <p><strong>VI. Explore your Spotify listening history in Splunk:</strong></p>
+      <ul>
+        <li><code>search host=Spotify ...</code></li>
+      </ul>
+    </div>
+    <footer class="footer mt-auto py-3">
+      <div class="container">
+      </div>
+    </footer>
+    <script>      
+      document.getElementById("redirect_uri_input").value = window.location.href.split('?')[0];
+      var page1 = document.getElementById('p1');
+      var page2 = document.getElementById('p2');
+      if (qs("code")==""){
+          page2.style.display = 'none';
+      }
+      else {
+        page1.style.display = 'none';
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+    <script>
+      var btn_name = document.getElementById('copy_name');
+      var btn_desc = document.getElementById('copy_desc');
+      var btn_reduri = document.getElementById('copy_reduri');
+      var btn_uri = document.getElementById('copy_uri');
+      var btn_auth = document.getElementById('copy_auth');
+      var clipboard = new ClipboardJS(btn_name);
+      var clipboard = new ClipboardJS(btn_desc);
+      var clipboard = new ClipboardJS(btn_uri);
+      var clipboard = new ClipboardJS(btn_reduri);
+      var clipboard = new ClipboardJS(btn_auth);
+      clipboard.on('success', function(e) {
+          console.log(e);
+      });
+      clipboard.on('error', function(e) {
+          console.log(e);
+      });
+    </script>
+  </body>
+</html>
