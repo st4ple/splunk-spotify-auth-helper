@@ -1,8 +1,9 @@
-# splunk-spotify-auth-helper
-This one-page website (hosted on GitHub pages) was built to help users authenticating the Spotify Add‑on for Splunk Modular Input with the Spotify API by walking them through the process of obtaining the required parameters.
+# :key: Spotify for Splunk * auth-helper
+This one-page website was built to help users authenticating [Spotify Add‑on for Splunk's]() Modular Input with the [Spotify API]() by walking them through the process of obtaining the required parameters.
 
-You can find it here: [https://st4ple.github.io/splunk-spotify-auth-helper](https://st4ple.github.io/splunk-spotify-auth-helper)
+:round_pushpin: [https://st4ple.github.io/splunk-spotify-auth-helper](https://st4ple.github.io/splunk-spotify-auth-helper)
 
 ### Related Links
-* Spotify Add-on for Splunk: [GitHub repository]() | [Splunkbase]()
-* Spotify App for Splunk: [GitHub repository]() | [Splunkbase]()
+:arrow_right: Spotify Add-on for Splunk: :octocat: [GitHub]() | :link: [Splunkbase]()
+
+:arrow_right: Spotify App for Splunk: :octocat: [GitHub]() | :link: [Splunkbase]()
