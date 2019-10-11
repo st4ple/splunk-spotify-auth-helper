@@ -61,7 +61,7 @@
         <input type="text" class="form-control mb-2 mr-sm-2" name="client_id" placeholder="Client ID">
         <input type="hidden" name="response_type" value="code">
         <input type="hidden" name="redirect_uri" id="redirect_uri_input">
-        <input type="hidden" name="scope" value="user-top-read user-read-currently-playing user-read-recently-played playlist-read-private user-read-email user-library-read playlist-read-collaborative user-read-birthdate user-read-playback-state user-read-private user-follow-read user-top-read user-read-currently-playing">
+        <input type="hidden" name="scope" value="user-read-currently-playing user-read-recently-played">
         <button type="submit" class="btn btn-primary mb-2">Authorize and Continue</button>
       </form></li></ul>
     </div>
@@ -78,7 +78,7 @@
             <li><mark>Client ID</mark> &amp; <mark>Client Secret</mark>: Copy from your <a href="https://developer.spotify.com/dashboard/applications">Spotify Developer Dashboard</a>.</li>
             <li><mark>Redirect URI</mark>: 
               <code id="uri"><script type="text/javascript">document.write(window.location.href.split('?')[0]);</script></code><button type="button" class="btn btn-link" data-clipboard-target="#uri" id="copy_uri">Copy</button></li>
-            <li><mark>Authorization Code</mark>: 
+            <li><mark>Authorization Code</mark>: s
               <code id="auth"><script type="text/javascript">document.write(qs("code"));</script></code><button type="button" class="btn btn-link" data-clipboard-target="#auth" id="copy_auth">Copy</button></li>
             <li>Click the <mark>More Settings</mark> button if you wish to adjust the <mark>Interval</mark>, <mark>Index</mark>, etc.</li>
           </ul>
